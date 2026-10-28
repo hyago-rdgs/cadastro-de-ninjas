@@ -2,11 +2,16 @@ package br.com.hyagorodrigues.CadastroDeNinjas.Ninjas;
 
 import br.com.hyagorodrigues.CadastroDeNinjas.Missoes.MissaoModel;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_ninjas")
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class NinjaModel {
 
     @Id
@@ -20,37 +25,4 @@ public class NinjaModel {
     @ManyToOne
     @JoinColumn(name = "missoes_id")
     private MissaoModel missao;
-
-    public NinjaModel() {
-    }
-
-    public NinjaModel(String nome, String email, Integer idade) {
-        this.nome = nome;
-        this.email = email;
-        this.idade = idade;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
 }
