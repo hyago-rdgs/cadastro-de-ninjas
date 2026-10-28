@@ -1,4 +1,4 @@
-package br.com.hyagorodrigues.cadastro_de_ninjas;
+package br.com.hyagorodrigues.CadastroDeNinjas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

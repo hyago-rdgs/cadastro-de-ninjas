@@ -1,4 +1,4 @@
-package br.com.hyagorodrigues.cadastro_de_ninjas;
+package br.com.hyagorodrigues.CadastroDeNinjas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
