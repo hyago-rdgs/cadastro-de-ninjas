@@ -3,7 +3,7 @@ package br.com.hyagorodrigues.CadastroDeNinjas.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("ninja")
+@RequestMapping("/ninja")
 public class NinjaController {
 
     @GetMapping("/boas-vindas")

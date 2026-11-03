@@ -3,7 +3,7 @@ package br.com.hyagorodrigues.CadastroDeNinjas.Missoes;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("missao")
+@RequestMapping("/missao")
 public class MissaoController {
 
     // Adicionar Missao (CREATE)
