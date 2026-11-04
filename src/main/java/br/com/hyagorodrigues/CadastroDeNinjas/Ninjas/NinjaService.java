@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NinjaService {
@@ -16,5 +17,10 @@ public class NinjaService {
 
     public List<NinjaModel> listar() {
         return ninjaRepository.findAll();
+    }
+
+    public NinjaModel listarPorId(Long id) {
+        Optional<NinjaModel> ninja = ninjaRepository.findById(id);
+        return ninja.orElse(null);
     }
 }
