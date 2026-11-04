@@ -15,8 +15,8 @@ public class NinjaController {
     }
 
     @PostMapping("/cadastrar")
-    public String cadastrar() {
-        return "Ninja Criado";
+    public NinjaModel cadastrar(@RequestBody NinjaModel ninja) {
+        return ninjaService.cadastrar(ninja);
     }
 
     @GetMapping("/listar")
