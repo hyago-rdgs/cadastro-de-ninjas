@@ -1,8 +1,11 @@
 package br.com.hyagorodrigues.CadastroDeNinjas.Missoes;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MissaoService {
 
     private MissaoRepository missaoRepository;

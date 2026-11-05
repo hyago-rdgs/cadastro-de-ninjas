@@ -15,22 +15,22 @@ public class NinjaController {
     }
 
     @PostMapping("/cadastrar")
-    public NinjaModel cadastrar(@RequestBody NinjaModel ninja) {
+    public NinjaDTO cadastrar(@RequestBody NinjaDTO ninja) {
         return ninjaService.cadastrar(ninja);
     }
 
     @GetMapping("/listar")
-    public List<NinjaModel> listar() {
+    public List<NinjaDTO> listar() {
         return ninjaService.listar();
     }
 
     @GetMapping("/listar/{id}")
-    public NinjaModel listarPorId(@PathVariable Long id) {
+    public NinjaDTO listarPorId(@PathVariable Long id) {
         return ninjaService.listarPorId(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public NinjaModel atualizarPorId(@PathVariable Long id, @RequestBody NinjaModel ninja) {
+    public NinjaDTO atualizarPorId(@PathVariable Long id, @RequestBody NinjaDTO ninja) {
         return ninjaService.atualizarPorId(id, ninja);
     }
 
