@@ -23,4 +23,13 @@ public class MissaoService {
         Optional<MissaoModel> missao = missaoRepository.findById(id);
         return missao.orElse(null);
     }
+
+    public MissaoModel atualizarPorId(Long id, MissaoModel missao) {
+        if(missaoRepository.existsById(id)) {
+           missao.setId(id);
+           missaoRepository.save(missao);
+        }
+
+        return null;
+    }
 }
