@@ -2,6 +2,8 @@ package br.com.hyagorodrigues.CadastroDeNinjas.Missoes;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/missao")
 public class MissaoController {
@@ -17,16 +19,14 @@ public class MissaoController {
         return missaoService.cadastrar(missao);
     }
 
-    // Listar todos os Missoes (READ)
     @GetMapping("/listar")
-    public String listar() {
-        return "Missoes Listado";
+    public List<MissaoModel> listar() {
+        return missaoService.listar();
     }
 
-    // Listar Missao por ID (READ)
-    @GetMapping("/listar/ID")
-    public String listarPorId() {
-        return "Missao Listado por ID";
+    @GetMapping("/listar/{id}")
+    public MissaoModel listarPorId(@PathVariable Long id) {
+        return missaoService.listarPorId(id);
     }
 
     // Editar Missao (UPDATE)
