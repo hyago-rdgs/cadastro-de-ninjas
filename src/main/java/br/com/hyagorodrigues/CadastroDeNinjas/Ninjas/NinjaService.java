@@ -38,7 +38,7 @@ public class NinjaService {
         return null;
     }
 
-    public void deletarPorId(Long id) {
+    public void excluirPorId(Long id) {
         ninjaRepository.deleteById(id);
     }
 }

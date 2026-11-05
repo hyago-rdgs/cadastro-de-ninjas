@@ -36,6 +36,6 @@ public class NinjaController {
 
     @DeleteMapping("/excluir/{id}")
     public void excluirPorId(@PathVariable Long id) {
-        ninjaService.deletarPorId(id);
+        ninjaService.excluirPorId(id);
     }
 }

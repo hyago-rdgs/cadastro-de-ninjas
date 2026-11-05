@@ -29,15 +29,13 @@ public class MissaoController {
         return missaoService.listarPorId(id);
     }
 
-    // Editar Missao (UPDATE)
     @PutMapping("/atualizar/{id}")
     public MissaoModel atualizar(@PathVariable Long id, @RequestBody MissaoModel missao) {
         return missaoService.atualizarPorId(id, missao);
     }
 
-    // Deletar Missao (DELETE)
-    @DeleteMapping("/excluir/ID")
-    public String excluirPorId() {
-        return "Missao excluido por ID";
+    @DeleteMapping("/excluir/{id}")
+    public void excluirPorId(@PathVariable Long id) {
+        missaoService.excluirPorId(id);
     }
 }

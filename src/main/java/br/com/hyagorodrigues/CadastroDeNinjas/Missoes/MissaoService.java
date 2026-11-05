@@ -32,4 +32,8 @@ public class MissaoService {
 
         return null;
     }
+
+    public void excluirPorId(Long id) {
+        missaoRepository.deleteById(id);
+    }
 }
