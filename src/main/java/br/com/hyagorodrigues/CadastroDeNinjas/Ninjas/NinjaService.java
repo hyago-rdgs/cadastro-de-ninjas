@@ -3,6 +3,7 @@ package br.com.hyagorodrigues.CadastroDeNinjas.Ninjas;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,5 +27,9 @@ public class NinjaService {
     public NinjaModel listarPorId(Long id) {
         Optional<NinjaModel> ninja = ninjaRepository.findById(id);
         return ninja.orElse(null);
+    }
+
+    public void deletarPorId(Long id) {
+        ninjaRepository.deleteById(id);
     }
 }
