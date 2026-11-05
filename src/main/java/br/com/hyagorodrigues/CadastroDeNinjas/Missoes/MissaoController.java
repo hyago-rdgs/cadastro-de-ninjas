@@ -6,10 +6,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/missao")
 public class MissaoController {
 
-    // Adicionar Missao (CREATE)
+    private MissaoService missaoService;
+
+    public MissaoController(MissaoService missaoService) {
+        this.missaoService = missaoService;
+    }
+
     @PostMapping("/cadastrar")
-    public String cadastrar() {
-        return "Missao Criado";
+    public MissaoModel cadastrar(@RequestBody MissaoModel missao) {
+        return missaoService.cadastrar(missao);
     }
 
     // Listar todos os Missoes (READ)

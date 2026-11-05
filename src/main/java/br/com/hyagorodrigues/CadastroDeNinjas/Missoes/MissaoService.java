@@ -8,5 +8,7 @@ public class MissaoService {
         this.missaoRepository = missaoRepository;
     }
 
-
+    public MissaoModel cadastrar(MissaoModel missao) {
+        return missaoRepository.save(missao);
+    }
 }
