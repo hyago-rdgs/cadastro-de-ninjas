@@ -4,33 +4,48 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MissaoService {
 
-    private MissaoRepository missaoRepository;
+    private final MissaoRepository missaoRepository;
+    private final MissaoMapper missaoMapper;
 
-    public MissaoService(MissaoRepository missaoRepository) {
+    public MissaoService(MissaoRepository missaoRepository, MissaoMapper missaoMapper) {
         this.missaoRepository = missaoRepository;
+        this.missaoMapper = missaoMapper;
     }
 
-    public MissaoModel cadastrar(MissaoModel missao) {
-        return missaoRepository.save(missao);
+    public MissaoDTO cadastrar(MissaoDTO missaoDTO) {
+        MissaoModel missao = missaoMapper.map(missaoDTO);
+        missao = missaoRepository.save(missao);
+        return missaoMapper.map(missao);
     }
 
-    public List<MissaoModel> listar() {
-        return missaoRepository.findAll();
+    public List<MissaoDTO> listar() {
+        List<MissaoModel> missoes = missaoRepository.findAll();
+        return missoes.stream()
+                .map(missaoMapper::map)
+                .collect(Collectors.toList());
     }
 
-    public MissaoModel listarPorId(Long id) {
+    public MissaoDTO listarPorId(Long id) {
         Optional<MissaoModel> missao = missaoRepository.findById(id);
-        return missao.orElse(null);
+        return missao
+                .map(missaoMapper::map)
+                .orElse(null);
     }
 
-    public MissaoModel atualizarPorId(Long id, MissaoModel missao) {
-        if(missaoRepository.existsById(id)) {
-           missao.setId(id);
-           missaoRepository.save(missao);
+    public MissaoDTO atualizarPorId(Long id, MissaoDTO missao) {
+        Optional<MissaoModel> missaoExistente = missaoRepository.findById(id);
+
+        if(missaoExistente.isPresent()) {
+           MissaoModel missaoAtualizado = missaoMapper.map(missao);
+           missaoAtualizado.setId(id);
+
+           missaoAtualizado = missaoRepository.save(missaoAtualizado);
+           return missaoMapper.map(missaoAtualizado);
         }
 
         return null;
