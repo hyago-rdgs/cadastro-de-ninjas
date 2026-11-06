@@ -1,6 +1,5 @@
 package br.com.hyagorodrigues.CadastroDeNinjas.Ninjas;
 
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,7 @@ import java.util.List;
 @RequestMapping("/ninja")
 public class NinjaController {
 
-    private NinjaService ninjaService;
+    private final NinjaService ninjaService;
 
     public NinjaController(NinjaService ninjaService) {
         this.ninjaService = ninjaService;
@@ -35,10 +34,11 @@ public class NinjaController {
     public ResponseEntity<?> listarPorId(@PathVariable Long id) {
         NinjaDTO ninja = ninjaService.listarPorId(id);
         if(ninja != null) {
-            return ResponseEntity.ok(ninja);
+            return ResponseEntity.ok()
+                    .body(ninja);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Ninja #" + id + " nao encontrado");
+                    .body("Ninja #" + id + " nao foi encontrado");
         }
     }
 
