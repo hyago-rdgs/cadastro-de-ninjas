@@ -20,9 +20,9 @@ public class MissaoMapper {
         MissaoDTO missaoDTO = new MissaoDTO();
 
         missaoDTO.setId(missaoModel.getId());
-        missaoDTO.setNome(missaoDTO.getNome());
-        missaoDTO.setDificuldade(missaoDTO.getDificuldade());
-        missaoDTO.setNinjas(missaoDTO.getNinjas());
+        missaoDTO.setNome(missaoModel.getNome());
+        missaoDTO.setDificuldade(missaoModel.getDificuldade());
+        missaoDTO.setNinjas(missaoModel.getNinjas());
 
         return missaoDTO;
     }
